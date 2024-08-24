@@ -1,10 +1,33 @@
 // src/styles/main.scss
-// $primary-color: #3498db;
-$primary-color: #bf34db;
+
+@use 'colors';
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   font-family: 'Arial', sans-serif;
-  background-color: $primary-color;
+  background-color: colors.$secondary-light;
+  color: colors.$neutral-dark;
   margin: 0;
   padding: 0;
+
+  .container {
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+  .section {
+    background-color: colors.$neutral;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
+  input {
+    border: 1px solid colors.$primary-light;
+    border-radius: .5rem;
+    padding: 1rem;
+    width: 100%;
+  }
 }
