@@ -1,4 +1,5 @@
 import './styles/main.scss';
+import Posts from './components/Posts';
 
 function App() {
   return (
