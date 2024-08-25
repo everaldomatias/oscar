@@ -29,37 +29,46 @@ const ServiceAutocomplete = ({ onSelect }) => {
 
     const handleSelect = (service) => {
         setQuery(service.title.rendered)
-        setSuggestions([]);
+        setSuggestions([])
         setIsSelected(true)
         onSelect(service)
-    };
+    }
 
     const handleInputChange = (e) => {
         setQuery(e.target.value)
         setIsSelected(false)
-    };
+    }
+
+    const handleCloseSuggestions = () => {
+        setSuggestions(false)
+    }
 
     return (
-        <div className="service-autocomplete">
+        <div className={suggestions.length > 0 ? "field autocomplete service-autocomplete suggestions-active" : "field autocomplete service-autocomplete"}>
             <input
                 type="text"
                 value={query}
                 onChange={handleInputChange}
                 placeholder="Digite para buscar serviços/peças..."
             />
-            {loading && <div>Carregando...</div>}
+            {loading && <div className="loading">Carregando...</div>}
             {suggestions.length > 0 && (
-                <ul className="suggestions-list">
-                    {suggestions.map((service) => (
-                        <li
-                            key={service.id}
-                            onClick={() => handleSelect(service)}
-                            className="suggestion-item"
-                        >
-                            {service.title.rendered}
-                        </li>
-                    ))}
-                </ul>
+                <div className="suggestions-container">
+                    <ul className="suggestions-list">
+                        {suggestions.map((service) => (
+                            <li
+                                key={service.id}
+                                onClick={() => handleSelect(service)}
+                                className="suggestion-item"
+                            >
+                                {service.title.rendered}
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="close-container">
+                        <button className="close-button" onClick={handleCloseSuggestions}></button>
+                    </div>
+                </div>
             )}
         </div>
     )

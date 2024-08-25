@@ -1,0 +1,86 @@
+@use 'colors';
+
+.field {
+    &.autocomplete {
+        &.suggestions-active {
+            input {
+                border-color: colors.$primary-light;
+                border-top-left-radius: .5rem;
+                border-top-right-radius: .5rem;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+                border-bottom: 0;
+            }
+        }
+
+        .suggestions-container {
+            position: relative;
+
+            .suggestions-list {
+                background-color: colors.$secondary-lightest;
+                border: 1px solid colors.$primary-light;
+                border-top: 0;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: .5rem;
+                border-bottom-left-radius: .5rem;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                width: 100%;
+
+                .suggestion-item {
+                    border-radius: .5rem;
+                    cursor: pointer;
+                    font-size: 1rem;
+                    padding: .75rem;
+
+                    &:hover {
+                        background-color: colors.$secondary-light;
+                    }
+                }
+            }
+        }
+
+        .close-container {
+            position: absolute;
+            right: 1rem;
+            top: -2.6rem;
+
+            .close-button {
+                background: transparent;
+                border-radius: 50%;
+                border: none;
+                color: red;
+                cursor: pointer;
+                font: inherit;
+                height: 1.2em;
+                overflow: hidden;
+                padding: 0;
+                position: relative;
+                text-indent: 100%;
+                width: 1.2em;
+
+                &:focus {
+                    outline: solid 0 transparent;
+                }
+
+                &:before, &:after {
+                    background: currentcolor;
+                    border-radius: .125em;
+                    content: '';
+                    height: 70%;
+                    position: absolute;
+                    top: 15%; left: calc(50% - .0625em);
+                    transform: rotate(45deg);
+                    width: .125em;
+                }
+
+                &:after {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+}
