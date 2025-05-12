@@ -51,7 +51,7 @@ const ServiceAutocomplete = ({ onSelect }) => {
                 onChange={handleInputChange}
                 placeholder="Digite para buscar serviços/peças..."
             />
-            {loading && <div className="loading">Carregando...</div>}
+            {loading && <div className="loading-container"><div className="loading"></div></div>}
             {suggestions.length > 0 && (
                 <div className="suggestions-container">
                     <ul className="suggestions-list">
@@ -65,9 +65,11 @@ const ServiceAutocomplete = ({ onSelect }) => {
                             </li>
                         ))}
                     </ul>
-                    <div className="close-container">
-                        <button className="close-button" onClick={handleCloseSuggestions}></button>
-                    </div>
+                    {!loading && (
+                        <div className="close-container">
+                            <button className="close-button" onClick={handleCloseSuggestions}></button>
+                        </div>
+                    )}
                 </div>
             )}
         </div>
