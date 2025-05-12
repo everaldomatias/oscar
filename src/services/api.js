@@ -1,7 +1,8 @@
 // src/services/api.js
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL
+
 export const fetchData = async (endpoint) => {
-    const baseUrl = '/wp-json/wp/v2/';
     const url = `${baseUrl}${endpoint}`;
 
     try {
